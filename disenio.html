@@ -46,4 +46,104 @@
               <text x="16" y="188" font-size="8" fill="currentColor">Proyecto 2</text>
               <rect x="10" y="206" width="56" height="20" fill="none" stroke="currentColor"/>
               <rect x="74" y="206" width="56" height="20" fill="none" stroke="currentColor"/>
-              <text x="14" y="219"
+              <text x="14" y="219" font-size="7" fill="currentColor">Habilidad</text>
+              <text x="78" y="219" font-size="7" fill="currentColor">Habilidad</text>
+              <rect x="10" y="232" width="120" height="18" fill="none" stroke="currentColor"/>
+              <text x="16" y="244" font-size="8" fill="currentColor">Contacto</text>
+            </svg>
+            <figcaption class="small mt-2">Móvil (360 px): una columna.</figcaption>
+          </figure>
+        </div>
+        <div class="col-12 col-md-8 text-center">
+          <figure class="mb-0">
+            <svg viewBox="0 0 400 250" class="img-fluid" role="img" aria-label="Boceto de la versión de ordenador: barra con enlaces, portada, y tres tarjetas de proyecto en una fila">
+              <rect x="2" y="2" width="396" height="246" rx="6" fill="none" stroke="currentColor" stroke-width="2"/>
+              <rect x="10" y="10" width="380" height="20" fill="none" stroke="currentColor"/>
+              <text x="16" y="24" font-size="9" fill="currentColor">Nombre</text>
+              <text x="210" y="24" font-size="8" fill="currentColor">Inicio  Sobre mí  Proyectos  Habilidades  Contacto</text>
+              <rect x="10" y="38" width="380" height="60" fill="none" stroke="currentColor"/>
+              <text x="20" y="62" font-size="11" fill="currentColor">Hola, soy…</text>
+              <rect x="20" y="72" width="50" height="14" rx="3" fill="none" stroke="currentColor"/>
+              <rect x="80" y="72" width="50" height="14" rx="3" fill="none" stroke="currentColor"/>
+              <rect x="10" y="106" width="380" height="28" fill="none" stroke="currentColor"/>
+              <text x="20" y="124" font-size="9" fill="currentColor">Sobre mí</text>
+              <rect x="10" y="142" width="120" height="62" fill="none" stroke="currentColor"/>
+              <rect x="140" y="142" width="120" height="62" fill="none" stroke="currentColor"/>
+              <rect x="270" y="142" width="120" height="62" fill="none" stroke="currentColor"/>
+              <text x="18" y="160" font-size="8" fill="currentColor">Proyecto 1</text>
+              <text x="148" y="160" font-size="8" fill="currentColor">Proyecto 2</text>
+              <text x="278" y="160" font-size="8" fill="currentColor">Proyecto 3</text>
+              <rect x="10" y="212" width="184" height="30" fill="none" stroke="currentColor"/>
+              <rect x="206" y="212" width="184" height="30" fill="none" stroke="currentColor"/>
+              <text x="18" y="231" font-size="8" fill="currentColor">Habilidades</text>
+              <text x="214" y="231" font-size="8" fill="currentColor">Contacto</text>
+            </svg>
+            <figcaption class="small mt-2">Ordenador (1280 px): menú completo y proyectos en tres columnas.</figcaption>
+          </figure>
+        </div>
+      </div>
+
+      <h3 class="h4 mt-4">2.2 Paleta de colores</h3>
+      <p>Uso un morado como color de marca (<code>#6d28d9</code>) sobre fondos claros (<code>#ffffff</code> y <code>#f5f3ff</code>) con texto gris muy oscuro (<code>#1f2937</code>). Elegí un único color de acento para que los botones y los títulos destaquen sin que la web se vea cargada, y porque se aleja del azul por defecto de Bootstrap, que era justo lo que quería evitar.</p>
+      <p>En el modo oscuro el fondo pasa a <code>#111827</code> y el acento se aclara a <code>#a78bfa</code>. El morado original sobre ese fondo da un contraste de solo 2,5:1, que casi no se lee, así que tuve que aclararlo.</p>
+      <p>Calculé los contrastes con la fórmula de WCAG: el morado <code>#6d28d9</code> sobre blanco da 7,1:1 (también el texto blanco de los botones sobre ese morado), el texto principal <code>#1f2937</code> sobre blanco da 14,7:1 y el acento <code>#a78bfa</code> sobre el fondo oscuro da 6,5:1. Todos superan el mínimo de 4,5:1 que recomiendan las pautas de accesibilidad para texto normal.</p>
+
+      <h3 class="h4 mt-4">2.3 Tipografías</h3>
+      <p>Uso <strong>Poppins</strong> para los títulos y <strong>Inter</strong> para el texto, ambas de Google Fonts. Poppins tiene formas redondeadas y mucha presencia, buena para titulares. Inter está diseñada para leerse bien en pantalla, incluso en tamaños pequeños. Los tamaños de los títulos usan <code>clamp()</code>, así crecen y se reducen con el ancho de pantalla sin necesidad de media queries.</p>
+
+      <h3 class="h4 mt-4">2.4 Framework: Bootstrap 5.3.3</h3>
+      <p>Elegí Bootstrap porque me da una rejilla responsive fiable, una barra de navegación que se convierte en menú hamburguesa en móvil y un sistema de modo claro y oscuro con el atributo <code>data-bs-theme</code>, todo sin configurar herramientas adicionales. Tailwind da más libertad, pero obliga a escribir mucho más a mano, y para este portfolio prefería centrarme en el diseño y en las decisiones de estilo.</p>
+      <p>Para que no tenga el aspecto por defecto, sobrescribí botones, tarjetas, colores y tipografías en mi archivo <code>css/estilos.css</code>, que cargo después de Bootstrap para que mis reglas ganen sin usar <code>!important</code>.</p>
+
+      <h3 class="h4 mt-4">2.5 Estructura de secciones</h3>
+      <p>Inicio presenta mi nombre y dos botones (ver proyectos y contacto). Sobre mí cuenta quién soy. Proyectos usa tarjetas en una rejilla de 1 columna en móvil, 2 en tableta y 3 en ordenador. Habilidades muestra mis tecnologías con iconos. Contacto reúne correo, LinkedIn y GitHub, y no incluye teléfono ni dirección por privacidad.</p>
+
+      <h3 class="h4 mt-4">2.6 Librerías</h3>
+      <p><strong>Bootstrap Icons 1.11.3</strong>: conjunto de iconos en forma de fuente. Lo añadí para las habilidades, el botón de modo oscuro y los botones de contacto, sin tener que subir imágenes.</p>
+    </section>
+
+    <section class="my-5">
+      <h2>3. Análisis de 3 portfolios reales</h2>
+      <p>Revisé tres portfolios de profesionales del sector que se citan a menudo como referencia. Para cada uno apunto qué me gusta, qué no me convence para mi caso y qué me llevo.</p>
+
+      <h3 class="h4 mt-4">3.1 Brittany Chiang · <a href="https://brittanychiang.com" target="_blank" rel="noopener">brittanychiang.com</a></h3>
+      <p><strong>Qué me gusta:</strong> es minimalista y va al grano. Usa un tema oscuro con acentos verdes y arranca con lo que busca un recruiter: nombre, puesto y una frase que resume qué hace. Solo destaca unos pocos proyectos, cada uno con captura, tecnologías y enlaces al sitio y al código, y deja el resto en una cuadrícula de proyectos menores. Se ve que prefiere pocos trabajos bien presentados antes que una lista larga.</p>
+      <p><strong>Qué no me convence:</strong> es tan conocido que muchos portfolios lo imitan, y copiar su aspecto me haría parecer uno más. Además, su fuerza viene de una trayectoria laboral que yo todavía no tengo.</p>
+      <p><strong>Qué me llevo:</strong> ir directo, enseñar pocos proyectos y enlazar siempre al código.</p>
+
+      <h3 class="h4 mt-4">3.2 Josh W. Comeau · <a href="https://www.joshwcomeau.com" target="_blank" rel="noopener">joshwcomeau.com</a></h3>
+      <p><strong>Qué me gusta:</strong> su web es cercana y con personalidad. Cuenta lo que hace con su propia voz y complementa los proyectos con artículos donde explica cómo trabaja, lo que demuestra conocimiento mucho mejor que una lista de tecnologías.</p>
+      <p><strong>Qué no me convence:</strong> es un modelo que exige mucho tiempo y contenido propio, y no puedo mantener un blog técnico ahora mismo. Su tono juguetón también depende de que ya tenga una reputación que lo respalde.</p>
+      <p><strong>Qué me llevo:</strong> escribir los textos con mi propia voz y explicar el porqué de las cosas, que es justo lo que hago en este documento.</p>
+
+      <h3 class="h4 mt-4">3.3 Sara Soueidan · <a href="https://www.sarasoueidan.com" target="_blank" rel="noopener">sarasoueidan.com</a></h3>
+      <p><strong>Qué me gusta:</strong> deja clarísimo en qué es especialista: SVG, rendimiento y accesibilidad. No intenta presentarse como alguien que lo sabe todo y eso la hace memorable. Refuerza su autoridad con charlas, artículos y recomendaciones de gente reconocida en el sector.</p>
+      <p><strong>Qué no me convence:</strong> esa autoridad se construye con años de experiencia, charlas y testimonios que un estudiante todavía no tiene. Si yo me presentara como especialista en algo, no tendría con qué demostrarlo.</p>
+      <p><strong>Qué me llevo:</strong> la accesibilidad también puede ser una seña de identidad. Aunque no sea especialista, puedo cuidar el contraste, la estructura semántica y el menú adaptable, y dejarlo documentado.</p>
+
+      <p class="small mt-4">Fuente consultada para este análisis: reseña «10 Best Developer Portfolio Examples That Get Hired» (Portfolio Studio, 2026), <a href="https://portfoliostudio.dev/blog/best-developer-portfolio-examples" target="_blank" rel="noopener">portfoliostudio.dev</a>.</p>
+    </section>
+
+    <section class="my-5">
+      <h2>4. En qué me diferencio</h2>
+      <p>Los tres portfolios que analicé se apoyan en algo que yo aún no tengo: años de trayectoria, una marca personal reconocida o una especialización con pruebas. Mi punto de partida es otro, así que no intento parecer alguien que no soy y me diferencio en tres cosas.</p>
+      <p><strong>1. Explico mis decisiones.</strong> Casi ninguno de los portfolios que revisé explica cómo está pensado. El mío enlaza este documento desde el pie, para que quien lo visite pueda ver por qué elegí cada color, tipografía y estructura. Para un perfil junior, enseñar cómo pienso vale más que enseñar solo el resultado.</p>
+      <p><strong>2. Soy honesto con lo que enseño.</strong> No lleno la sección de habilidades con todo lo que he tocado alguna vez: solo pongo las tecnologías que uso en este proyecto y en los de clase. Los proyectos están identificados como lo que son, trabajos y ejercicios del ciclo, con su descripción y un enlace directo al código para que se pueda comprobar.</p>
+      <p><strong>3. Cuido los detalles que casi nadie ve.</strong> Modo claro y oscuro que recuerda la elección, tipografía que se adapta al tamaño de pantalla con <code>clamp()</code>, página 404 propia, contrastes comprobados y un menú que se adapta a móvil. No llaman la atención a primera vista, pero hacen que la web funcione bien en cualquier dispositivo.</p>
+      <p>Lo que quiero que piense alguien que abra mi portfolio es: «es una persona ordenada, que sabe por qué hace las cosas y que se puede formar rápido».</p>
+    </section>
+
+    <section class="my-5">
+      <h2>5. Responsive</h2>
+      <p>En 360 px el menú se colapsa en hamburguesa y las tarjetas de proyecto y las habilidades se apilan en una o dos columnas. En 768 px el menú se muestra completo y los proyectos pasan a dos columnas. En 1280 px los proyectos se colocan de tres en tres y el contenido de texto se limita en ancho para que se lea mejor. Probé las tres medidas con las herramientas del navegador para comprobar que no hay scroll horizontal.</p>
+    </section>
+
+    <section class="my-5">
+      <h2>6. Imágenes y uso de IA</h2>
+      <p><strong>Imágenes y recursos:</strong> no uso imágenes de terceros. Los iconos son de Bootstrap Icons (licencia MIT), las tipografías Poppins e Inter son de Google Fonts (licencia SIL Open Font) y las capturas de los proyectos serán mías.</p>
+      <p><strong>Uso de IA:</strong> he usado Claude (Anthropic) como apoyo en varias partes: para generar el código base de <code>index.html</code>, <code>estilos.css</code>, <code>main.js</code> y <code>404.html</code>, el README del perfil, un borrador de este documento y una guía paso a paso para publicar en GitHub Pages. También lo usé para buscar ejemplos de portfolios y redactar un primer borrador del análisis de la sección 3.</p>
+      <p><strong>Lo que hice yo:</strong> crear y renombrar los repositorios, activar GitHub Pages con HTTPS, subir y organizar los archivos, hacer públicos y fijar mis tres proyectos (<code>cristina-sparkle-pro</code>, <code>RepositorioPaginaPerfil</code> y <code>dwes-clase</code>), personalizar el README de mi perfil, decidir el enfoque del portfolio y revisar y asumir el contenido de este documento.</p>
+    </section>
+  </main>
+</body>
+</html>
