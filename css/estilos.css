@@ -1,23 +1,37 @@
+/* ==========================================================
+   TEMA PROPIO
+   Todo el aspecto del portfolio (colores y tipografías) sale de las variables
+   de :root. Para cambiar la imagen de la web basta con tocar este bloque,
+   sin buscar valores repetidos por el archivo.
+   ========================================================== */
+
+/* Dos familias: Poppins para títulos (formas redondeadas, mucha presencia) e Inter
+   para el texto (pensada para leerse bien en pantalla). Solo cargo los pesos que uso
+   para que la web pese menos */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Inter:wght@400;500&display=swap');
 
 :root {
-  --color-principal: #6d28d9;
-  --color-principal-osc: #5b21b6;
+  --color-principal: #6d28d9;     /* Morado de marca. Con texto blanco da 7,1:1 de contraste */
+  --color-principal-osc: #5b21b6; /* Más oscuro: se usa solo en el hover de los botones */
   --color-fondo: #ffffff;
-  --color-fondo-alt: #f5f3ff;
-  --color-texto: #1f2937;
-  --fuente-titulos: 'Poppins', sans-serif;
+  --color-fondo-alt: #f5f3ff;     /* Lila muy claro: separa secciones sin usar líneas */
+  --color-texto: #1f2937;         /* Gris casi negro: más suave que el negro puro y de sobra legible */
+  --fuente-titulos: 'Poppins', sans-serif;  /* sans-serif como respaldo si falla Google Fonts */
   --fuente-texto: 'Inter', sans-serif;
 }
 
+/* Bootstrap 5.3 pone data-bs-theme="dark" en <html> cuando cambia al modo oscuro.
+   Redefino mis variables para ese caso y el resto del CSS no cambia. El acento se
+   aclara porque el morado original sobre fondo oscuro da solo 2,5:1 y casi no se lee */
 [data-bs-theme="dark"] {
   --color-fondo: #111827;
   --color-fondo-alt: #1f2937;
   --color-texto: #e5e7eb;
   --color-principal: #a78bfa;
-  --color-principal-osc: #c4b5fd;
+  --color-principal-osc: #c4b5fd;  /* En oscuro el hover se aclara en vez de oscurecerse */
 }
 
+/* Desplazamiento suave al pulsar un enlace del menú */
 html { scroll-behavior: smooth; }
 
 body {
@@ -28,8 +42,13 @@ body {
 
 h1, h2, h3, h4, .navbar-brand { font-family: var(--fuente-titulos); }
 
+/* La navbar es fija y tapa lo que queda debajo. Este margen evita que cubra el título
+   de la sección al saltar a ella desde el menú */
 section { scroll-margin-top: 70px; }
 
+/* --- NAVEGACIÓN ---
+   Sobrescribo los colores de Bootstrap con mis variables para que la barra
+   también cambie en modo oscuro */
 .barra-nav {
   background: var(--color-fondo);
   box-shadow: 0 2px 10px rgba(0,0,0,.08);
@@ -37,15 +56,21 @@ section { scroll-margin-top: 70px; }
 .barra-nav .nav-link, .barra-nav .navbar-brand { color: var(--color-texto); }
 .barra-nav .nav-link:hover { color: var(--color-principal); }
 
+/* --- PORTADA ---
+   clamp(mínimo, ideal, máximo): el título crece con el ancho de pantalla (6vw) sin pasar
+   de 2,2rem en móvil ni de 4rem en ordenador. Evita escribir media queries solo
+   para cambiar un tamaño de letra */
 .titulo-hero { font-size: clamp(2.2rem, 6vw, 4rem); font-weight: 700; }
 .etiqueta { color: var(--color-principal); font-weight: 600; margin-bottom: .25rem; }
 
+/* --- SECCIONES --- */
 .seccion { padding: 5rem 0; }
-.seccion-alt { background: var(--color-fondo-alt); }
+.seccion-alt { background: var(--color-fondo-alt); }  /* Alterna fondos para marcar dónde empieza cada sección */
 .titulo-seccion {
   font-size: clamp(1.6rem, 4vw, 2.4rem);
   margin-bottom: 2rem;
 }
+/* Subrayado decorativo creado solo con CSS (pseudo-elemento ::after), sin imágenes */
 .titulo-seccion::after {
   content: "";
   display: block;
@@ -54,8 +79,12 @@ section { scroll-margin-top: 70px; }
   margin-top: .5rem;
   border-radius: 2px;
 }
+/* En las secciones centradas (Contacto) el subrayado también se centra */
 .text-center .titulo-seccion::after { margin-inline: auto; }
 
+/* --- BOTONES ---
+   Bootstrap trae btn-primary en azul. Creo mis propias clases en vez de modificar
+   las suyas, para no tocar su CSS y mantener la personalización en un solo sitio */
 .btn-principal {
   background: var(--color-principal);
   color: #fff;
@@ -72,6 +101,9 @@ section { scroll-margin-top: 70px; }
 }
 .btn-outline-principal:hover { background: var(--color-principal); color: #fff; }
 
+/* --- TARJETAS DE PROYECTO ---
+   Quito el borde de Bootstrap y uso sombra, que da sensación de elevación. La
+   transición hace que el efecto hover sea suave en vez de brusco */
 .tarjeta-proyecto {
   background: var(--color-fondo);
   border: none;
@@ -84,6 +116,7 @@ section { scroll-margin-top: 70px; }
 }
 .etiqueta-tec { background: var(--color-principal); }
 
+/* --- HABILIDADES --- */
 .habilidad {
   padding: 1.5rem 1rem;
   border-radius: 12px;
@@ -91,9 +124,14 @@ section { scroll-margin-top: 70px; }
 }
 .habilidad i { font-size: 2.5rem; color: var(--color-principal); }
 
+/* --- PIE --- */
 .pie { background: var(--color-fondo-alt); }
 .pie a { color: var(--color-principal); }
 
+/* --- RESPONSIVE ---
+   Bootstrap define la tableta desde 768 px. Con max-width: 767.98px apunto solo al móvil
+   (el .98 evita que se solape exactamente en 768). En pantallas pequeñas reduzco el
+   espaciado vertical para no desperdiciar la pantalla con tanto margen */
 @media (max-width: 767.98px) {
   .seccion { padding: 3rem 0; }
 }
