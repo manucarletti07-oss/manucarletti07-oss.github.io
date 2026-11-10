@@ -2,42 +2,33 @@
 <html lang="es" data-bs-theme="light">
 <head>
   <meta charset="UTF-8">
-  <!-- Sin esta etiqueta el móvil simula una pantalla de ordenador y Bootstrap no se adapta -->
+  <!-- Necesaria para que la web se adapte al móvil -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Manu Carletti | Desarrollador Web</title>
   <meta name="description" content="Portfolio de Manu Carletti, desarrollador web junior. Proyectos, habilidades y contacto.">
-  <!-- Open Graph: define la tarjeta que sale al compartir el enlace en LinkedIn u otras redes -->
+  <!-- Open Graph: tarjeta al compartir el enlace en redes -->
   <meta property="og:title" content="Manu Carletti | Desarrollador Web">
   <meta property="og:description" content="Mira mis proyectos y habilidades.">
   <meta property="og:url" content="https://manucarletti07-oss.github.io">
-  <!-- Bootstrap es el único framework CSS del proyecto, como pide el enunciado. Versión fijada
-       (5.3.3) para que una actualización futura no cambie el aspecto sin avisar -->
+  <!-- Bootstrap, el único framework, con la versión fijada -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
-  <!-- Mi CSS va el último: con la misma especificidad, la regla que aparece después gana,
-       así puedo sobrescribir Bootstrap sin usar !important -->
+  <!-- Mi CSS va el último para poder sobrescribir Bootstrap -->
   <link href="css/estilos.css" rel="stylesheet">
 </head>
 <body>
 
-  <!-- ===== NAVEGACIÓN =====
-       navbar-expand-md: en pantallas menores de 768 px el menú se esconde tras el botón
-       hamburguesa y desde 768 px se muestra completo.
-       fixed-top: el menú sigue visible al hacer scroll, para moverse entre secciones. -->
+  <!-- Menú: hamburguesa en móvil y completo desde 768 px; fijo al hacer scroll -->
   <header>
     <nav class="navbar navbar-expand-md fixed-top barra-nav">
       <div class="container">
         <a class="navbar-brand fw-bold" href="#inicio">Manu Carletti</a>
-        <!-- data-bs-toggle y data-bs-target hacen que Bootstrap abra y cierre el menú
-             sin que yo escriba JavaScript. aria-label describe el botón a lectores de pantalla -->
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#menu" aria-controls="menu" aria-expanded="false"
                 aria-label="Abrir menú">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="menu">
-          <!-- ms-auto empuja los enlaces a la derecha. gap-md-2 solo separa los enlaces
-               cuando están en fila (desde tableta), no en el menú vertical del móvil -->
           <ul class="navbar-nav ms-auto align-items-md-center gap-md-2">
             <li class="nav-item"><a class="nav-link" href="#inicio">Inicio</a></li>
             <li class="nav-item"><a class="nav-link" href="#sobre-mi">Sobre mí</a></li>
@@ -45,4 +36,144 @@
             <li class="nav-item"><a class="nav-link" href="#habilidades">Habilidades</a></li>
             <li class="nav-item"><a class="nav-link" href="#contacto">Contacto</a></li>
             <li class="nav-item">
-              <!-- Solo lleva un icono, así que necesita aria-label para que
+              <!-- Botón de modo claro/oscuro (js/main.js); aria-label porque solo tiene icono -->
+              <button id="btn-tema" class="btn btn-sm btn-outline-secondary" aria-label="Cambiar entre modo claro y oscuro">
+                <i class="bi bi-moon-stars"></i>
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- Inicio: ocupa toda la pantalla y centra el contenido -->
+    <section id="inicio" class="hero d-flex align-items-center min-vh-100">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8">
+            <p class="etiqueta">Hola, soy</p>
+            <h1 class="titulo-hero">Manu Carletti</h1>
+            <p class="lead">Desarrollador web junior. Creo interfaces claras, accesibles y adaptables.</p>
+            <a href="#proyectos" class="btn btn-principal me-2">Ver proyectos</a>
+            <a href="#contacto" class="btn btn-outline-principal">Contacto</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="sobre-mi" class="seccion">
+      <div class="container">
+        <h2 class="titulo-seccion">Sobre mí</h2>
+        <div class="row">
+          <!-- col-lg-8: líneas más cortas en ordenador para leer mejor -->
+          <div class="col-lg-8">
+            <p>Soy estudiante y me estoy formando como desarrollador web. En el ciclo he trabajado tanto la parte visual, con diseño de interfaces adaptables a móvil, tableta y ordenador, como la parte de servidor, con bases de datos y aplicaciones que guardan y consultan información.</p>
+            <p>Me gusta que las cosas funcionen y se entiendan a la primera, así que cuido la claridad, el contraste y la adaptación a cualquier pantalla. Busco unas prácticas o un primer empleo donde seguir aprendiendo con un equipo y aportar desde el primer día.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Proyectos: 1 columna en móvil (col-12), 2 en tableta (col-md-6) y 3 en ordenador (col-lg-4) -->
+    <section id="proyectos" class="seccion seccion-alt">
+      <div class="container">
+        <h2 class="titulo-seccion">Proyectos</h2>
+        <div class="row g-4">
+
+          <div class="col-12 col-md-6 col-lg-4">
+            <!-- h-100 iguala la altura de las tarjetas; mt-auto deja los botones abajo -->
+            <article class="card h-100 tarjeta-proyecto">
+              <div class="card-body d-flex flex-column">
+                <h3 class="h5 card-title">Cristina Sparkle Pro</h3>
+                <p class="card-text">Web para una clínica estética donde se pueden pedir citas, conectada a una base de datos. Muestra los servicios, los precios y la información de la clínica, y un panel para consultar las citas, los gastos y los ingresos.</p>
+                <p class="mb-3">
+                  <span class="badge etiqueta-tec">TypeScript</span>
+                  <span class="badge etiqueta-tec">Base de datos</span>
+                </p>
+                <div class="mt-auto">
+                  <a href="https://github.com/manucarletti07-oss/cristina-sparkle-pro" class="btn btn-sm btn-principal" target="_blank" rel="noopener">Código</a>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <div class="col-12 col-md-6 col-lg-4">
+            <article class="card h-100 tarjeta-proyecto">
+              <div class="card-body d-flex flex-column">
+                <h3 class="h5 card-title">Tarjeta visual de perfil</h3>
+                <p class="card-text">Tarjeta personal en la que me presento y cuento lo que estudio, diseñada con una maquetación sencilla y cuidada.</p>
+                <p class="mb-3">
+                  <span class="badge etiqueta-tec">HTML</span>
+                  <span class="badge etiqueta-tec">CSS</span>
+                </p>
+                <div class="mt-auto">
+                  <a href="https://github.com/manucarletti07-oss/RepositorioPaginaPerfil" class="btn btn-sm btn-principal" target="_blank" rel="noopener">Código</a>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <div class="col-12 col-md-6 col-lg-4">
+            <article class="card h-100 tarjeta-proyecto">
+              <div class="card-body d-flex flex-column">
+                <h3 class="h5 card-title">Ejercicios de clase (DWES)</h3>
+                <p class="card-text">Colección de ejercicios de práctica del módulo de Desarrollo Web en Entorno Servidor, donde he trabajado la lógica de servidor y el trabajo con datos.</p>
+                <p class="mb-3">
+                  <span class="badge etiqueta-tec">Entorno servidor</span>
+                </p>
+                <div class="mt-auto">
+                  <a href="https://github.com/manucarletti07-oss/dwes-clase" class="btn btn-sm btn-principal" target="_blank" rel="noopener">Código</a>
+                </div>
+              </div>
+            </article>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Habilidades: 2 por fila en móvil (col-6) y 4 desde tableta (col-md-3) -->
+    <section id="habilidades" class="seccion">
+      <div class="container">
+        <h2 class="titulo-seccion">Habilidades</h2>
+        <div class="row g-3 text-center">
+          <div class="col-6 col-md-3"><div class="habilidad"><i class="bi bi-filetype-html"></i><p>HTML5</p></div></div>
+          <div class="col-6 col-md-3"><div class="habilidad"><i class="bi bi-filetype-css"></i><p>CSS3</p></div></div>
+          <div class="col-6 col-md-3"><div class="habilidad"><i class="bi bi-bootstrap"></i><p>Bootstrap</p></div></div>
+          <div class="col-6 col-md-3"><div class="habilidad"><i class="bi bi-filetype-js"></i><p>JavaScript</p></div></div>
+          <div class="col-6 col-md-3"><div class="habilidad"><i class="bi bi-code-slash"></i><p>TypeScript</p></div></div>
+          <div class="col-6 col-md-3"><div class="habilidad"><i class="bi bi-database"></i><p>Bases de datos</p></div></div>
+          <div class="col-6 col-md-3"><div class="habilidad"><i class="bi bi-git"></i><p>Git y GitHub</p></div></div>
+          <div class="col-6 col-md-3"><div class="habilidad"><i class="bi bi-phone"></i><p>Diseño responsive</p></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contacto: sin teléfono ni dirección por privacidad -->
+    <section id="contacto" class="seccion seccion-alt">
+      <div class="container text-center">
+        <h2 class="titulo-seccion">Contacto</h2>
+        <p>¿Hablamos? Escríbeme o mira mi código en GitHub.</p>
+        <a href="mailto:m.carletti@vigarafp.es" class="btn btn-principal me-2 mb-2">
+          <i class="bi bi-envelope"></i> Email
+        </a>
+        <a href="https://github.com/manucarletti07-oss" class="btn btn-outline-principal mb-2" target="_blank" rel="noopener">
+          <i class="bi bi-github"></i> GitHub
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="pie text-center py-3">
+    <small>© 2026 Manu Carletti · <a href="diseno.html">Documento de diseño</a></small>
+  </footer>
+
+  <!-- Scripts al final para no bloquear la carga -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
