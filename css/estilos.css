@@ -1,109 +1,63 @@
-/* Tema propio: colores y tipografías en variables para cambiar el aspecto desde un solo sitio */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Inter:wght@400;500&display=swap');
+/* ===== EFECTOS 3D ===== */
 
-:root {
-  --color-principal: #6d28d9;
-  --color-principal-osc: #5b21b6;
-  --color-fondo: #ffffff;
-  --color-fondo-alt: #f5f3ff;
-  --color-texto: #1f2937;
-  --fuente-titulos: 'Poppins', sans-serif;
-  --fuente-texto: 'Inter', sans-serif;
+/* Portada: degradado suave con el color de marca; overflow hidden evita scroll horizontal */
+.hero {
+  position: relative;
+  overflow: hidden;
+  background: radial-gradient(circle at 85% 25%, color-mix(in srgb, var(--color-principal) 24%, transparent), transparent 55%);
 }
 
-/* Modo oscuro: Bootstrap añade data-bs-theme="dark" y aquí cambio las variables.
-   El acento se aclara porque el morado original casi no se lee sobre fondo oscuro */
-[data-bs-theme="dark"] {
-  --color-fondo: #111827;
-  --color-fondo-alt: #1f2937;
-  --color-texto: #e5e7eb;
-  --color-principal: #a78bfa;
-  --color-principal-osc: #c4b5fd;
+/* Cubo: perspective en el contenedor crea la profundidad; preserve-3d hace que las caras
+   mantengan su posición 3D al girar. El tamaño usa clamp() para adaptarse a la pantalla */
+.escena {
+  --lado: clamp(110px, 26vw, 170px);
+  perspective: 900px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 260px;
 }
-
-html { scroll-behavior: smooth; }
-
-body {
-  font-family: var(--fuente-texto);
-  background: var(--color-fondo);
-  color: var(--color-texto);
+.cubo {
+  position: relative;
+  width: var(--lado);
+  height: var(--lado);
+  transform-style: preserve-3d;
+  animation: girar 18s linear infinite;
 }
-
-h1, h2, h3, h4, .navbar-brand { font-family: var(--fuente-titulos); }
-
-/* Evita que el menú fijo tape el título al saltar a una sección */
-section { scroll-margin-top: 70px; }
-
-/* Menú con mis colores para que también cambie en modo oscuro */
-.barra-nav {
-  background: var(--color-fondo);
-  box-shadow: 0 2px 10px rgba(0,0,0,.08);
-}
-.barra-nav .nav-link, .barra-nav .navbar-brand { color: var(--color-texto); }
-.barra-nav .nav-link:hover { color: var(--color-principal); }
-
-/* clamp(mínimo, ideal, máximo): el título se adapta al ancho sin media queries */
-.titulo-hero { font-size: clamp(2.2rem, 6vw, 4rem); font-weight: 700; }
-.etiqueta { color: var(--color-principal); font-weight: 600; margin-bottom: .25rem; }
-
-.seccion { padding: 5rem 0; }
-.seccion-alt { background: var(--color-fondo-alt); }
-.titulo-seccion {
-  font-size: clamp(1.6rem, 4vw, 2.4rem);
-  margin-bottom: 2rem;
-}
-/* Subrayado decorativo hecho solo con CSS */
-.titulo-seccion::after {
-  content: "";
-  display: block;
-  width: 60px; height: 4px;
-  background: var(--color-principal);
-  margin-top: .5rem;
-  border-radius: 2px;
-}
-.text-center .titulo-seccion::after { margin-inline: auto; }
-
-/* Botones propios para sustituir el azul de Bootstrap */
-.btn-principal {
-  background: var(--color-principal);
+.cara {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(var(--lado) * .4);
   color: #fff;
-  border: 2px solid var(--color-principal);
-}
-.btn-principal:hover {
-  background: var(--color-principal-osc);
-  border-color: var(--color-principal-osc);
-  color: #fff;
-}
-.btn-outline-principal {
-  color: var(--color-principal);
-  border: 2px solid var(--color-principal);
-}
-.btn-outline-principal:hover { background: var(--color-principal); color: #fff; }
-
-/* Tarjetas con sombra en vez de borde; sube un poco al pasar el ratón */
-.tarjeta-proyecto {
-  background: var(--color-fondo);
-  border: none;
-  box-shadow: 0 4px 14px rgba(0,0,0,.1);
-  transition: transform .25s ease, box-shadow .25s ease;
-}
-.tarjeta-proyecto:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 10px 24px rgba(0,0,0,.18);
-}
-.etiqueta-tec { background: var(--color-principal); }
-
-.habilidad {
-  padding: 1.5rem 1rem;
+  background: linear-gradient(135deg, #6d28d9, #c026d3);
+  border: 1px solid rgba(255, 255, 255, .4);
   border-radius: 12px;
-  background: var(--color-fondo-alt);
+  opacity: .93;
 }
-.habilidad i { font-size: 2.5rem; color: var(--color-principal); }
+/* Cada cara se gira y se aleja del centro la mitad del lado para formar el cubo */
+.cara-1 { transform: translateZ(calc(var(--lado) / 2)); }
+.cara-2 { transform: rotateY(90deg) translateZ(calc(var(--lado) / 2)); }
+.cara-3 { transform: rotateY(180deg) translateZ(calc(var(--lado) / 2)); }
+.cara-4 { transform: rotateY(-90deg) translateZ(calc(var(--lado) / 2)); }
+.cara-5 { transform: rotateX(90deg) translateZ(calc(var(--lado) / 2)); }
+.cara-6 { transform: rotateX(-90deg) translateZ(calc(var(--lado) / 2)); }
+@keyframes girar {
+  from { transform: rotateX(-25deg) rotateY(0deg); }
+  to   { transform: rotateX(-25deg) rotateY(360deg); }
+}
 
-.pie { background: var(--color-fondo-alt); }
-.pie a { color: var(--color-principal); }
+/* Aparición al hacer scroll: la clase la añade main.js solo si no se pidió reducir movimiento */
+.revelar {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity .6s ease, transform .6s ease;
+}
+.revelar.visible { opacity: 1; transform: none; }
 
-/* Responsive: solo en móvil (menos de 768 px) reduzco el espaciado vertical */
-@media (max-width: 767.98px) {
-  .seccion { padding: 3rem 0; }
+/* Accesibilidad: sin animaciones para quien las tiene desactivadas en su sistema */
+@media (prefers-reduced-motion: reduce) {
+  .cubo { animation: none; transform: rotateX(-25deg) rotateY(35deg); }
 }
