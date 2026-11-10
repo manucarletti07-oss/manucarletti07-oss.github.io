@@ -1,0 +1,32 @@
+/* Muestra de color: en ordenador es una columna alta; en móvil una fila baja */
+.muestra {
+  height: 220px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  gap: .5rem;
+  padding: 1rem;
+  box-shadow: 0 4px 14px rgba(0,0,0,.15);
+}
+
+/* Los botones heredan el color del texto, que calculo según el fondo para que siempre se lea */
+.muestra button {
+  background: none;
+  border: none;
+  color: inherit;
+  font-weight: 600;
+}
+.muestra-hex { font-family: monospace; font-size: 1.1rem; }
+.muestra-candado { font-size: 1.4rem; }
+.muestra button:focus-visible { outline: 3px solid currentColor; outline-offset: 2px; }
+
+@media (max-width: 767.98px) {
+  .muestra {
+    height: 80px;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
